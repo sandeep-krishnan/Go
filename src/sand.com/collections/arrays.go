@@ -21,6 +21,8 @@ func main() {
 		fmt.Println("Day using i is " + days[i])
 	}
 
+	//the input is a slice of original array
+	//which means it's basically a pointer
 	changeToLowerCasePassByReference(days[:])
 
 	printArray(days[:])
