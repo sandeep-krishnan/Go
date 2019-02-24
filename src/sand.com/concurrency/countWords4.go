@@ -20,6 +20,8 @@ func main() {
 		}
 	}()
 
+	//the wordCh is used directly in range
+	//note the return of range is having only 1 param
 	for word := range wordCh {
 		wordMap[word]++
 	}
