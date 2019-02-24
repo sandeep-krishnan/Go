@@ -11,6 +11,12 @@ func main() {
 
 	fmt.Println("Length of channel after adding ", len(ch))
 
+	//close the channel
+	close(ch)
+
+	//this will error out as the channel is closed
+	ch <- 13
+
 	fmt.Println(<-ch)
 	fmt.Println(<-ch)
 }
