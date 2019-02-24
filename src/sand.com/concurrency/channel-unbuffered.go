@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	//bi-directional unbuffered
 	ch := make(chan int)
 
 	sendNonBlockingMessage(ch)
