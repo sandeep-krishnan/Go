@@ -19,7 +19,7 @@ func main() {
 
 	for {
 		output, open := <-ch
-		if open == false {
+		if !open {
 			break
 		}
 		fmt.Println(output)
