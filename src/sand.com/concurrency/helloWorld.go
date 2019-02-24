@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import "concurrency/util"
+import "sand.com/concurrency/util"
 
 func main() {
 	go util.PrintNumbers(1, 10, 2)

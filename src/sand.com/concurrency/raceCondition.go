@@ -1,8 +1,8 @@
 package main
 
 import (
-	"concurrency/util"
 	"fmt"
+	"sand.com/concurrency/util"
 )
 
 func main() {
