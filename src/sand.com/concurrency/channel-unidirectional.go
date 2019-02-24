@@ -15,10 +15,15 @@ func main() {
 	close(ch)
 
 	//this will error out as the channel is closed
-	ch <- 13
+	//ch <- 13
 
-	fmt.Println(<-ch)
-	fmt.Println(<-ch)
+	for {
+		output, open := <-ch
+		if open == false {
+			break
+		}
+		fmt.Println(output)
+	}
 }
 
 func addNumbersToChannel(c chan<- int) {
