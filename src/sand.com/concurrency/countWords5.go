@@ -8,8 +8,8 @@ import (
 
 func main() {
 
-	wordCh := producer(util.Sentences)
-	wordMap := consumer(wordCh)
+	wordCh := produce(util.Sentences)
+	wordMap := consume(wordCh)
 
 	//receive only channel, can't add
 	//the following will throw compile error
@@ -18,7 +18,7 @@ func main() {
 	fmt.Println(wordMap)
 }
 
-func producer(sentences []string) <-chan string {
+func produce(sentences []string) <-chan string {
 	wordCh := make(chan string)
 
 	go func() {
@@ -34,7 +34,7 @@ func producer(sentences []string) <-chan string {
 	return wordCh
 }
 
-func consumer(wordCh <-chan string) map[string]int {
+func consume(wordCh <-chan string) map[string]int {
 	wordMap := make(map[string]int)
 
 	for word := range wordCh {
