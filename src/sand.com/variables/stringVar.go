@@ -51,16 +51,26 @@ func createCustomer() {
 	cust.id = 1
 
 	printCustomer(cust)
-	modifyCustomer(cust)
+	modifyCustomerPtr(cust)
 	printCustomer(cust)
 
+	cust2 := customer{5, "abc"}
+	printCustomer(&cust2)
+	//this wouldn't modify the customer
+	modifyCustomer(cust2)
+	printCustomer(&cust2)
 }
 
 func printCustomer(cust *customer) {
 	fmt.Println("Customer ", cust.id, " ", cust.name)
 }
 
-func modifyCustomer(cust *customer) {
+func modifyCustomerPtr(cust *customer) {
 	fmt.Println("Modifying customer id to 2")
 	cust.id = 2
+}
+
+func modifyCustomer(cust customer) {
+	fmt.Println("Modifying customer id to 20")
+	cust.id = 20
 }
