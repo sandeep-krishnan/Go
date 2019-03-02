@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -28,7 +29,9 @@ func main() {
 }
 
 func handleRequest(conn net.Conn) {
+	defer conn.Close()
 	for {
+		conn.SetReadDeadline(time.Now().Add(time.Second * 10))
 		data := make([]byte, 1024)
 		n, error := conn.Read(data)
 
@@ -41,12 +44,12 @@ func handleRequest(conn net.Conn) {
 		fmt.Println(input)
 
 		if input == "quit" {
-			conn.Close()
 			return
 		}
 
-		conn.Write([]byte(strings.ToUpper(input)))
-		conn.Write([]byte("\n"))
+		conn.Write([]byte(strings.ToUpper(input) + "\n"))
+
+		conn.SetWriteDeadline(time.Now().Add(time.Second * 5))
 	}
 }
 
