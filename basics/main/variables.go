@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"sand.com/basics"
+	"sand.com/golang-examples/basics"
 )
 
 func main() {
